@@ -48,7 +48,7 @@ export default function LeadForm({
   heading = 'Krijg vroege toegang',
   subheading = 'Laat je e-mail achter en we verwittigen je zodra de beta open gaat. Geen spam, geen verkoop aan derden.',
 }: LeadFormProps) {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'ok' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'ok' | 'error' | 'placeholder'>('idle');
   const [email, setEmail] = useState('');
   const [intent, setIntent] = useState('just-interested');
   const [effectiveSegment, setEffectiveSegment] = useState(segment);
@@ -72,6 +72,27 @@ export default function LeadForm({
     }
   }, []);
 
+  // Reageer op een pricing-CTA-klik op dezelfde pagina: het formulier is al gemonteerd
+  // vóór de klik, dus zonder dit zou het 'just-interested' submitten i.p.v. de tier.
+  useEffect(() => {
+    function onIntent(e: Event) {
+      const detail = (e as CustomEvent<{ intent?: string; segment?: string }>).detail;
+      if (detail?.intent) setIntent(detail.intent);
+      if (detail?.segment) setEffectiveSegment(detail.segment);
+    }
+    function onNav() {
+      setIntent(readIntent());
+    }
+    window.addEventListener('sp:intent', onIntent as EventListener);
+    window.addEventListener('popstate', onNav);
+    window.addEventListener('hashchange', onNav);
+    return () => {
+      window.removeEventListener('sp:intent', onIntent as EventListener);
+      window.removeEventListener('popstate', onNav);
+      window.removeEventListener('hashchange', onNav);
+    };
+  }, []);
+
   const endpoint = useMemo(
     () => `https://formspree.io/f/${SITE.FORMSPREE_ID}`,
     []
@@ -84,15 +105,11 @@ export default function LeadForm({
     const data = new FormData(form);
     try {
       if (SITE.FORMSPREE_ID === 'REPLACE_ME') {
-        // Development fallback: log + pretend success voor smoketests.
+        // Formspree nog niet geconfigureerd: niets versturen/opslaan en eerlijk een
+        // "binnenkort"-melding tonen i.p.v. een valse succesbevestiging.
         // eslint-disable-next-line no-console
-        console.info('[LeadForm] (dev) submit', Object.fromEntries(data.entries()));
-        setStatus('ok');
-        // Plausible event
-        (window as unknown as { plausible?: (e: string, o?: unknown) => void }).plausible?.(
-          'signup_form_submit',
-          { props: { segment: effectiveSegment, intent } }
-        );
+        console.info('[LeadForm] Formspree niet geconfigureerd — submit genegeerd', Object.fromEntries(data.entries()));
+        setStatus('placeholder');
         return;
       }
       const res = await fetch(endpoint, {
@@ -120,7 +137,19 @@ export default function LeadForm({
         <h3 className="text-lg font-semibold text-success">Bedankt — je staat op de lijst.</h3>
         <p className="mt-2 text-primary/80">
           Je hoort van ons zodra we de beta openen. Geen spam, geen verkoop aan derden.
-          Eventueel vraag ik je om één keer kort mee te denken (10 min call, volledig vrijblijvend).
+          Eventueel vragen we je om één keer kort mee te denken (10 min call, volledig vrijblijvend).
+        </p>
+      </div>
+    );
+  }
+
+  if (status === 'placeholder') {
+    return (
+      <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-sm text-primary">
+        <h3 className="text-lg font-semibold text-accent">Inschrijvingen openen binnenkort</h3>
+        <p className="mt-2 text-primary/80">
+          We zetten de wachtlijst zo open. Kom straks nog eens terug om je in te schrijven —
+          dan verwittigen we je zodra de beta start.
         </p>
       </div>
     );

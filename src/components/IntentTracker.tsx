@@ -54,6 +54,15 @@ export default function IntentTracker({
     url.hash = 'lead';
     window.history.replaceState({}, '', url.toString());
 
+    // Laat het reeds-gemonte LeadForm-island de gekozen intent/segment overnemen.
+    // (replaceState vuurt geen popstate/hashchange, dus expliciet event nodig — anders
+    // submit het formulier 'just-interested' i.p.v. de aangeklikte tier.)
+    try {
+      window.dispatchEvent(new CustomEvent('sp:intent', { detail: { intent, segment } }));
+    } catch {
+      /* ignore */
+    }
+
     const target = document.getElementById('lead');
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }

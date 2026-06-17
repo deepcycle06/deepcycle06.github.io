@@ -23,13 +23,14 @@ export const SITE = {
   // ── Gratis meet-stack ───────────────────────────────────────────────────────
   // Formspree endpoint-ID (gratis tier, 50 submissions/mnd). Dit is HET kanaal dat
   // signups + per-segment WtP-signalen vastlegt (segment/intent als hidden fields).
-  // TODO Niels: maak 1 form op formspree.io, plak het ID na /f/ hier. Tot dan toont
-  // het formulier een lokale dev-succes (er worden GEEN echte e-mails opgeslagen).
+  // TODO (uitbater): maak 1 gratis form op formspree.io en plak het ID na /f/ hier.
+  // Zolang dit 'REPLACE_ME' is, toont het formulier een nette "binnenkort"-melding
+  // en wordt er niets verstuurd of opgeslagen.
   FORMSPREE_ID: 'REPLACE_ME',
   // Cloudflare Web Analytics beacon-token (gratis, cookieloos — portfolio-standaard).
   // Levert pageviews per pagina (= per segment via /voor/[segment]). Geen custom events.
-  // TODO Niels: dash.cloudflare.com → Web Analytics → Add a site → vul de live-URL in →
-  // kopieer de "token" uit het beacon-snippet → plak hier. Leeg = beacon laadt niet.
+  // TODO (uitbater): dash.cloudflare.com → Web Analytics → Add a site → vul de live-URL
+  // in → kopieer de "token" uit het beacon-snippet → plak hier. Leeg = beacon laadt niet.
   CF_BEACON_TOKEN: '',
 } as const;
 
