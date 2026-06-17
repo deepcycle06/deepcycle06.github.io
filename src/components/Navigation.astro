@@ -1,0 +1,30 @@
+---
+import { SEGMENTS } from '../data/segments';
+
+const segmentLinks = SEGMENTS.map((s) => ({
+  href: `/voor/${s.slug}/`,
+  label: s.shortLabel,
+}));
+---
+
+<nav aria-label="Hoofdnavigatie" class="hidden items-center gap-6 md:flex">
+  <details class="relative">
+    <summary class="cursor-pointer list-none text-sm font-medium text-primary/80 hover:text-primary">
+      Voor jouw sector
+    </summary>
+    <div class="absolute right-0 mt-2 w-64 rounded-xl border border-primary/10 bg-white p-2 shadow-lg">
+      {segmentLinks.map((l) => (
+        <a
+          href={l.href}
+          class="block rounded-lg px-3 py-2 text-sm text-primary/80 hover:bg-primary/5 hover:text-primary"
+          >{l.label}</a>
+      ))}
+    </div>
+  </details>
+  <a href="/#pricing" class="text-sm font-medium text-primary/80 hover:text-primary">Prijzen</a>
+  <a href="/#faq" class="text-sm font-medium text-primary/80 hover:text-primary">FAQ</a>
+  <a href="/over-ons/" class="text-sm font-medium text-primary/80 hover:text-primary">Over</a>
+  <a href="/#lead" class="btn-primary">Vroege toegang</a>
+</nav>
+
+<a href="/#lead" class="btn-primary md:hidden">Inschrijven</a>

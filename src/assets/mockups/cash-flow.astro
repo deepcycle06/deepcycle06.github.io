@@ -1,0 +1,77 @@
+---
+// Cash-flow per maand (horeca-case):
+// - balken: omzet - vaste kosten - loonkost (positief = groen, negatief = rood)
+// - vaste-kosten-lijn horizontaal
+// - januari = nulomzet-maand, expliciet rood
+const months = ['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+// Netto cashflow per maand in €'000
+const values = [-6, -4, -2, 4, 10, 16, 22, 26, 14, 6, -2, 8];
+const fixedCost = 5; // vaste kosten ref-lijn (€5K)
+
+const W = 400;
+const H = 220;
+const padL = 36;
+const padR = 12;
+const padT = 28;
+const padB = 28;
+const plotW = W - padL - padR;
+const plotH = H - padT - padB;
+const minV = -10;
+const maxV = 30;
+const barW = (plotW / months.length) - 4;
+
+function y(v: number) {
+  return padT + (1 - (v - minV) / (maxV - minV)) * plotH;
+}
+function x(i: number) {
+  return padL + (plotW / months.length) * i + 2;
+}
+
+const zeroY = y(0);
+const fixedY = y(fixedCost);
+---
+<svg
+  role="img"
+  aria-label="Illustratieve cash-flow-grafiek per maand: positieve maanden in groen, nulomzet-maand januari negatief in rood, vaste-kosten-lijn horizontaal"
+  viewBox={`0 0 ${W} ${H}`}
+  xmlns="http://www.w3.org/2000/svg"
+  class="h-auto w-full"
+>
+  <title>Illustratieve cash-flow per maand</title>
+  <desc>Horeca met wintersluiting: januari nulomzet-maand met negatieve cashflow -6K, piek juli-augustus +22K/+26K. Horizontale referentielijn: vaste kosten 5K per maand.</desc>
+  <rect width={W} height={H} rx="8" fill="#f8fafc"/>
+
+  <text x={padL} y={18} font-size="11" font-weight="600" fill="#0F172A">Cash-flow per maand (€ '000) — illustratief</text>
+
+  {[-10, 0, 10, 20, 30].map((g) => (
+    <g>
+      <line x1={padL} y1={y(g)} x2={W - padR} y2={y(g)} stroke="#e2e8f0" stroke-width="1"/>
+      <text x={padL - 4} y={y(g) + 3} text-anchor="end" font-size="9" fill="#64748b">{g}</text>
+    </g>
+  ))}
+
+  <line x1={padL} y1={zeroY} x2={W - padR} y2={zeroY} stroke="#94a3b8" stroke-width="1"/>
+
+  <line x1={padL} y1={fixedY} x2={W - padR} y2={fixedY} stroke="#D97706" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x={W - padR} y={fixedY - 3} text-anchor="end" font-size="8" fill="#D97706" font-weight="600">vaste kosten €5K</text>
+
+  {values.map((v, i) => {
+    const bx = x(i);
+    const top = v >= 0 ? y(v) : zeroY;
+    const h = Math.abs(y(v) - zeroY);
+    const fill = v >= 0 ? '#059669' : '#ef4444';
+    return <rect x={bx} y={top} width={barW} height={h} rx="2" fill={fill}/>;
+  })}
+
+  {months.map((m, i) => (
+    <text x={x(i) + barW / 2} y={H - padB + 16} text-anchor="middle" font-size="9" fill="#64748b">{m}</text>
+  ))}
+
+  <g transform={`translate(${W - padR - 100}, ${padT + 2})`}>
+    <rect x="-100" y="0" width="100" height="24" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+    <rect x="-92" y="6" width="10" height="10" fill="#059669"/>
+    <text x="-78" y="15" font-size="9" fill="#64748b">positief</text>
+    <rect x="-44" y="6" width="10" height="10" fill="#ef4444"/>
+    <text x="-30" y="15" font-size="9" fill="#64748b">negatief</text>
+  </g>
+</svg>

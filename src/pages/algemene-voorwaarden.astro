@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+const updated = '2026-04-13';
+---
+<BaseLayout
+  title="Algemene voorwaarden | Seizoensplanner"
+  description="Algemene voorwaarden van Seizoensplanner. Beta-fase — inschrijving verbindt niet tot aankoop."
+>
+  <article class="section">
+    <div class="container-x prose prose-slate max-w-3xl">
+      <h1>Algemene voorwaarden</h1>
+      <p><em>Placeholder-versie voor beta-fase. Laatste update: {updated}.</em></p>
+
+      <h2>1. Beta-status</h2>
+      <p>
+        Seizoensplanner is momenteel in beta. Er is nog geen commerciële dienst beschikbaar.
+        Inschrijven voor vroege toegang verbindt jou tot <strong>niets</strong>:
+        geen betaling, geen contract, geen automatische omzetting naar een abonnement.
+      </p>
+
+      <h2>2. Reservatie vroege toegang</h2>
+      <p>
+        Door je e-mail achter te laten, geef je ons toestemming je op de hoogte te brengen wanneer de beta open gaat.
+        Wanneer we pricing-tiers activeren, krijg je eerst een aanbod per mail. Pas na expliciete aanvaarding word je betalend klant.
+      </p>
+
+      <h2>3. Prijzen (indicatief)</h2>
+      <ul>
+        <li>Starter — €79 eenmalig (Excel-template + PDF)</li>
+        <li>Pro — €49 per maand</li>
+        <li>Team — €99 per maand</li>
+      </ul>
+      <p>Beta-klanten krijgen 50% early-bird korting op het eerste jaar (Pro/Team) of eenmalig (Starter). Prijzen kunnen wijzigen vóór launch; we communiceren elke wijziging.</p>
+
+      <h2>4. Geld-terug-garantie beta</h2>
+      <p>Tijdens de beta geldt 30 dagen geld-terug-garantie, zonder reden nodig.</p>
+
+      <h2>5. Aansprakelijkheid</h2>
+      <p>
+        De tool berekent personeelsplanning en loonkosten op basis van Belgische regelgeving.
+        We doen er alles aan om correct te zijn, met bronvermelding per regel. Niettemin blijft de gebruiker verantwoordelijk voor eigen boekhouding en sociale-zekerheidsaangiften.
+        Wij zijn niet aansprakelijk voor indirecte schade door onjuiste planning.
+      </p>
+
+      <h2>6. Intellectuele eigendom</h2>
+      <p>Alle inhoud op deze website, inclusief SVG-mockups, teksten en code, is eigendom van Seizoensplanner. Gebruik voor eigen promotie niet toegelaten zonder toestemming.</p>
+
+      <h2>7. Toepasselijk recht</h2>
+      <p>Belgisch recht. Geschillen worden voorgelegd aan de bevoegde Belgische rechtbank.</p>
+
+      <h2>8. Contact</h2>
+      <p>
+        Seizoensplanner — een onafhankelijke website, gevestigd in {SITE.controllerLocation}.
+        Vragen? Mail ons op <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

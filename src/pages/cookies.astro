@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const updated = '2026-04-13';
+---
+<BaseLayout
+  title="Cookies | Seizoensplanner"
+  description="Seizoensplanner gebruikt geen tracking-cookies. Analytics via Cloudflare Web Analytics is cookieloos."
+>
+  <article class="section">
+    <div class="container-x prose prose-slate max-w-3xl">
+      <h1>Cookie-verklaring</h1>
+      <p><em>Laatste update: {updated}</em></p>
+
+      <h2>Korte versie</h2>
+      <p>
+        <strong>Deze website gebruikt geen tracking-cookies.</strong>
+        We gebruiken <a href="https://www.cloudflare.com/web-analytics/">Cloudflare Web Analytics</a> voor geaggregeerde bezoekstatistieken — cookieloos en GDPR-vriendelijk.
+        Daarom zie je geen cookie-banner.
+      </p>
+
+      <h2>Volledige uitleg</h2>
+      <p>
+        Cloudflare Web Analytics meet pageviews zonder cookies en zonder een
+        identificeerbaar unieke-gebruiker-ID in je browser te plaatsen. Er wordt geen
+        fingerprint of cross-site-profiel opgebouwd. Meer info:
+        <a href="https://developers.cloudflare.com/web-analytics/">developers.cloudflare.com/web-analytics</a>.
+      </p>
+      <p>
+        Als we ooit overschakelen naar een analytics-systeem dat wél cookies vereist (bv. Google Analytics 4),
+        activeren we op dat moment een cookie-banner conform de GDPR en ePrivacy-richtlijn.
+        Dit staat vandaag niet op de planning.
+      </p>
+
+      <h2>Functionele opslag</h2>
+      <p>
+        We gebruiken <code>localStorage</code> in je browser voor één klein ding:
+        als je op een pricing-CTA klikt en daarna inschrijft, onthouden we welke tier je aanklikte,
+        zodat we dat kunnen meenemen in de inschrijving. Dit is geen cookie en deze data verlaat je browser niet.
+      </p>
+
+      <h2>Vragen?</h2>
+      <p>Zie ook ons <a href="/privacy/">privacy-beleid</a>.</p>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import type { PainPoint } from '../data/segments';
+
+export interface Props {
+  title?: string;
+  eyebrow?: string;
+  items: PainPoint[];
+}
+
+const { title = 'Het kernprobleem', eyebrow = 'Waarom dit', items } = Astro.props;
+---
+<section class="section bg-primary/5">
+  <div class="container-x">
+    <span class="eyebrow">{eyebrow}</span>
+    <h2 class="h2 mt-2 max-w-3xl">{title}</h2>
+    <div class="mt-10 grid gap-6 md:grid-cols-3">
+      {items.map((p) => (
+        <article class="card">
+          <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-warning/10 text-warning">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">{p.title}</h3>
+          <p class="mt-2 text-sm text-primary/70">{p.body}</p>
+          <p class="mt-4 text-xs text-primary/50">Bron: {p.source}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

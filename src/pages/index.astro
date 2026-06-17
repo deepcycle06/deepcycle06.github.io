@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SegmentTiles from '../components/SegmentTiles.astro';
+import PainPointBlock from '../components/PainPointBlock.astro';
+import FeatureList from '../components/FeatureList.astro';
+import MockupGallery from '../components/MockupGallery.astro';
+import PricingCards from '../components/PricingCards.astro';
+import FAQSection from '../components/FAQSection.astro';
+import LeadForm from '../components/LeadForm.tsx';
+import { SITE } from '../config/site';
+
+const kernProblem = [
+  {
+    title: 'Overbezetting in laagseizoen',
+    body:
+      '1 FTE te veel gedurende 1 maand in een €50K-omzet-bar = ~€3.000 weggegooide loonkost. Over een volledig jaar loopt "vorig jaar ook"-planning snel op tot €8.000-15.000 verlies.',
+    source: 'Lightspeed × Zenchef BE-onderzoek 2024',
+  },
+  {
+    title: 'Onderbezetting op piek-dagen',
+    body:
+      'Een kermis of warm weekend zonder extra volk: 15-25% omzet-verlies door trage service, boze gasten, slechte reviews. Tot €1.500 per mis-dag.',
+    source: 'L1NDA / Horeca Magazine, 2024-2025',
+  },
+  {
+    title: 'Aanwerving die te laat start',
+    body:
+      'Horeca-vacatures staan gemiddeld 187 dagen open. Te laat publiceren = begin seizoen met 70% bezetting = 10-20% omzet-verlies in mei-juni.',
+    source: 'Horeca Webzine, 2025 · VDAB Knelpuntberoepen',
+  },
+];
+
+const productFeatures = [
+  {
+    title: 'Maand-per-maand forecast',
+    body:
+      'Geen één-getal-per-jaar, maar een curve die jouw werkelijke seizoensvorm volgt — met betrouwbaarheidsband op elk punt.',
+  },
+  {
+    title: 'Weer + events + historie gecombineerd',
+    body:
+      'KMI-weerdata, schoolvakanties, lokale events en jouw eigen 2 jaar historie vormen samen één forecast. Geen zwarte doos.',
+  },
+  {
+    title: 'Belgisch-fiscaal correct',
+    body:
+      'Flexi, student 475u, gelegenheidsarbeid, RSZ-bijdragen per type, PC-minimumlonen. Bronnen met datum bij elke regel.',
+  },
+  {
+    title: 'Aanwervings-timing terug-gerekend',
+    body:
+      'Vanaf wanneer publiceren om op 1 juli klaar te zijn met 12 studenten? De tool rekent leadtime + reply-rate + onboarding terug.',
+  },
+  {
+    title: 'Cash-flow-impact in één scherm',
+    body:
+      'Omzet - vaste kosten - loonkost per maand. Zie op voorhand welke nulomzet-maand je moet overbruggen.',
+  },
+];
+
+const homepageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Seizoensplanner',
+    url: SITE.url,
+    inLanguage: 'nl-BE',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Seizoensplanner',
+    url: SITE.url,
+    email: SITE.contactEmail,
+    areaServed: 'Belgium',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Seizoensplanner',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: [
+      {
+        '@type': 'Offer',
+        name: 'Starter',
+        price: '79',
+        priceCurrency: 'EUR',
+        category: 'OneTime',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Pro',
+        price: '49',
+        priceCurrency: 'EUR',
+        category: 'Subscription',
+      },
+      {
+        '@type': 'Offer',
+        name: 'Team',
+        price: '99',
+        priceCurrency: 'EUR',
+        category: 'Subscription',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Seizoensplanner — FTE-forecast voor Belgische seizoensbedrijven"
+  description="Data-gedreven FTE-planning voor Belgische KMO's in horeca, kust & toerisme, tuinbouw en events. Maand-per-maand loonkost, Belgisch-fiscaal correct. Beta."
+  schema={homepageSchema}
+>
+  <Hero />
+  <SegmentTiles />
+  <PainPointBlock
+    title="Planning op gevoel kost een Belgische seizoens-KMO €8.000-15.000 per jaar."
+    eyebrow="Het kernprobleem"
+    items={kernProblem}
+  />
+  <FeatureList
+    title="Wat Seizoensplanner voor jou berekent."
+    eyebrow="De belofte"
+    items={productFeatures}
+  />
+  <MockupGallery />
+  <PricingCards segment="homepage" />
+  <FAQSection />
+
+  <section class="section bg-white" id="lead">
+    <div class="container-x grid gap-10 lg:grid-cols-2">
+      <div class="max-w-xl">
+        <span class="eyebrow">Vroege toegang</span>
+        <h2 class="h2 mt-2">Sluit aan bij de beta.</h2>
+        <p class="mt-4 text-primary/70">
+          We openen de beta in golven. Inschrijven kost niets en verbindt je tot niets. Beta-klanten krijgen 50% early-bird korting op het eerste jaar (Pro/Team) of eenmalig (Starter), én mogen mee bepalen welke sector-varianten we eerst uitbouwen.
+        </p>
+        <ul class="mt-6 space-y-2 text-sm text-primary/70">
+          <li>Geen spam, geen verkoop aan derden.</li>
+          <li>Alleen updates als er iets concreets te melden is.</li>
+          <li>Uitschrijven in één klik, altijd.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <LeadForm client:load segment="homepage" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-primary/5" id="over">
+    <div class="container-x max-w-3xl">
+      <span class="eyebrow">Over Seizoensplanner</span>
+      <h2 class="h2 mt-2">Gebouwd in Vlaanderen, voor Belgische seizoens-KMO's.</h2>
+      <p class="mt-4 text-primary/70">
+        Seizoensplanner is een project van een individuele ondernemer in Vlaanderen die zelf jaren met "vorig jaar ook"-planning worstelde.
+        We bouwen bewust klein en transparant: geen VC-druk, geen feature-overload, gewoon de planning-data die je vandaag mist.
+      </p>
+      <p class="mt-4 text-primary/70">
+        Meer over de aanpak en contact op <a class="underline text-accent" href="/over-ons/">de over-pagina</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,75 @@
+---
+// Forecast-grafiek: 12 maanden jan-dec horeca-curve met confidence-band.
+// Y-as = omzet-index (basis 100), typische horeca-seasonality (laag jan-mrt, hoog jul-aug, dip nov).
+const months = ['J','F','M','A','M','J','J','A','S','O','N','D'];
+// index (0-100%)
+const curve = [20, 22, 30, 45, 62, 80, 95, 98, 75, 50, 28, 40];
+const upper = curve.map((v) => Math.min(100, v + 10));
+const lower = curve.map((v) => Math.max(0, v - 10));
+
+const W = 400;
+const H = 220;
+const padL = 30;
+const padR = 16;
+const padT = 18;
+const padB = 32;
+const plotW = W - padL - padR;
+const plotH = H - padT - padB;
+
+function x(i: number) {
+  return padL + (i / (curve.length - 1)) * plotW;
+}
+function y(v: number) {
+  return padT + (1 - v / 100) * plotH;
+}
+
+const linePts = curve.map((v, i) => `${x(i)},${y(v)}`).join(' ');
+const bandPath =
+  upper.map((v, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(v)}`).join(' ') +
+  ' ' +
+  [...lower].reverse().map((v, idx) => {
+    const i = lower.length - 1 - idx;
+    return `L${x(i)},${y(v)}`;
+  }).join(' ') +
+  ' Z';
+
+const gridY = [0, 25, 50, 75, 100];
+---
+<svg
+  role="img"
+  aria-label="Illustratieve forecast-grafiek: omzet-verwachting jan-dec met 10% betrouwbaarheidsband, typische horeca-seasonality met piek juli-augustus"
+  viewBox={`0 0 ${W} ${H}`}
+  xmlns="http://www.w3.org/2000/svg"
+  class="h-auto w-full"
+>
+  <title>Illustratieve forecast-grafiek 12 maanden</title>
+  <desc>Horeca-seasonality: lage omzet in winter, piek in juli-augustus, tussenpiek in december rond de feestdagen. Lijn: puntvoorspelling. Band: 10% betrouwbaarheidsinterval.</desc>
+  <rect width={W} height={H} rx="8" fill="#f8fafc"/>
+
+  {gridY.map((g) => (
+    <g>
+      <line x1={padL} y1={y(g)} x2={W - padR} y2={y(g)} stroke="#e2e8f0" stroke-width="1"/>
+      <text x={padL - 6} y={y(g) + 3} text-anchor="end" font-size="9" fill="#64748b">{g}</text>
+    </g>
+  ))}
+
+  <path d={bandPath} fill="#2563EB" fill-opacity="0.12"/>
+  <polyline points={linePts} fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linejoin="round"/>
+
+  {curve.map((v, i) => (
+    <circle cx={x(i)} cy={y(v)} r="2.5" fill="#2563EB"/>
+  ))}
+
+  {months.map((m, i) => (
+    <text x={x(i)} y={H - padB + 16} text-anchor="middle" font-size="10" fill="#64748b">{m}</text>
+  ))}
+
+  <g transform={`translate(${padL + 8}, ${padT + 4})`}>
+    <rect x="0" y="0" width="132" height="36" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="8" y="14" font-size="9" fill="#0F172A" font-weight="600">Omzet-forecast horeca</text>
+    <line x1="8" y1="22" x2="22" y2="22" stroke="#2563EB" stroke-width="2"/>
+    <text x="26" y="25" font-size="8" fill="#64748b">puntvoorspelling</text>
+    <rect x="8" y="28" width="14" height="6" fill="#2563EB" fill-opacity="0.25"/>
+    <text x="26" y="33" font-size="8" fill="#64748b">10% band</text>
+  </g>
+</svg>

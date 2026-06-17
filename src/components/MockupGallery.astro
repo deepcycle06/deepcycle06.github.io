@@ -1,0 +1,50 @@
+---
+import ForecastChart from '../assets/mockups/forecast-chart.astro';
+import FtePlan from '../assets/mockups/fte-plan.astro';
+import CashFlow from '../assets/mockups/cash-flow.astro';
+---
+<section class="section bg-primary/5" id="how">
+  <div class="container-x">
+    <span class="eyebrow">Hoe het werkt</span>
+    <h2 class="h2 mt-2 max-w-3xl">Drie schermen waarin je je seizoen ziet, begrijpt en bijstuurt.</h2>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-3">
+      <figure class="card">
+        <div class="overflow-hidden rounded-lg border border-primary/5">
+          <ForecastChart />
+        </div>
+        <figcaption class="mt-4">
+          <h3 class="text-base font-semibold">1. Forecast-grafiek</h3>
+          <p class="mt-1 text-sm text-primary/70">
+            Maand-per-maand omzet-verwachting met betrouwbaarheidsband.
+            Weer, evenementen en jouw historie gecombineerd.
+          </p>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="overflow-hidden rounded-lg border border-primary/5">
+          <FtePlan />
+        </div>
+        <figcaption class="mt-4">
+          <h3 class="text-base font-semibold">2. FTE-plan per week</h3>
+          <p class="mt-1 text-sm text-primary/70">
+            Vast, flexi, student en interim per week. Fiscaal optimaal en met aanwervings-timing terug-gerekend.
+          </p>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="overflow-hidden rounded-lg border border-primary/5">
+          <CashFlow />
+        </div>
+        <figcaption class="mt-4">
+          <h3 class="text-base font-semibold">3. Cash-flow-impact</h3>
+          <p class="mt-1 text-sm text-primary/70">
+            Omzet minus vaste kosten minus loonkost per maand. Zie welke nulomzet-maand je moet overbruggen.
+          </p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import { FAQ_ITEMS } from '../data/faq';
+---
+<section class="section bg-primary/5" id="faq">
+  <div class="container-x max-w-3xl">
+    <span class="eyebrow">Veelgestelde vragen</span>
+    <h2 class="h2 mt-2">Wat je waarschijnlijk wil weten.</h2>
+
+    <dl class="mt-10 divide-y divide-primary/10 overflow-hidden rounded-2xl border border-primary/10 bg-white">
+      {FAQ_ITEMS.map((item) => (
+        <details class="group">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold">
+            <span>{item.q}</span>
+            <span class="inline-flex h-7 w-7 flex-none items-center justify-center rounded-full bg-primary/5 text-primary transition group-open:rotate-45">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-primary/70">{item.a}</div>
+        </details>
+      ))}
+    </dl>
+  </div>
+</section>

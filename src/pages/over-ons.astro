@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+<BaseLayout
+  title="Over Seizoensplanner — gebouwd in Vlaanderen"
+  description="Wie bouwt Seizoensplanner en waarom. Individuele ondernemer, bewust klein, gefocust op Belgische seizoens-KMO's."
+>
+  <article class="section">
+    <div class="container-x prose prose-slate max-w-3xl">
+      <h1>Over Seizoensplanner</h1>
+
+      <p class="lead">
+        Seizoensplanner is een project van een individuele ondernemer in Vlaanderen.
+        Bewust klein, bewust gefocust op één probleem: hoeveel personeel heeft een Belgische seizoens-KMO elke maand nodig, welke contract-mix is optimaal, en wat kost dat?
+      </p>
+
+      <h2>Waarom deze tool?</h2>
+      <p>
+        De meeste seizoensbedrijven plannen op gevoel en op "vorig jaar ook".
+        Dat kost een bar met 10 FTE al snel €8.000-15.000 per jaar aan vermijdbare loonkost.
+        Tegelijk worden Belgische KMO's niet goed bediend: internationale tools (Deputy, 7shifts) missen de fiscale finesse (flexi, 475u-student, gelegenheidsarbeid),
+        en Belgische HR-software (Officient, SD Worx, Acerta) plant op dag-niveau, niet op maand- en seizoens-niveau.
+      </p>
+      <p>
+        Seizoensplanner vult dat gat in — en doet het met bronvermelding voor elke fiscale regel.
+      </p>
+
+      <h2>Wat we niet zijn</h2>
+      <ul>
+        <li>Geen VC-gefinancierde growth-machine. Geen druk om hype te verkopen.</li>
+        <li>Geen generalist-tool die "alles" wil zijn. We plannen seizoen, verder niks.</li>
+        <li>Geen dag-planner (dat doen Strobbo, Shyfter, bookU beter).</li>
+        <li>Geen sociaal-secretariaats-vervanger. Wij berekenen; zij verwerken.</li>
+      </ul>
+
+      <h2>Hoe werken we?</h2>
+      <ul>
+        <li><strong>Transparant</strong> — alle fiscale regels in de tool hebben een bron met datum.</li>
+        <li><strong>Iteratief</strong> — beta met betalende early adopters, dan pas scale.</li>
+        <li><strong>Belgisch-gefocust</strong> — geen FR/NL-markt-ambities in v1.</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        Vragen, feedback of een sectorcase om te testen?
+        Mail <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+      </p>
+      <p class="text-sm text-primary/60">Seizoensplanner — een onafhankelijke website, gevestigd in België.</p>
+    </div>
+  </article>
+</BaseLayout>

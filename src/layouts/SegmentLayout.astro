@@ -1,0 +1,59 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Segment } from '../data/segments';
+import { SITE } from '../config/site';
+
+export interface Props {
+  segment: Segment;
+}
+
+const { segment } = Astro.props;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `Seizoensplanner voor ${segment.shortLabel}`,
+  description: segment.metaDescription,
+  provider: {
+    '@type': 'Organization',
+    name: SITE.name,
+    url: SITE.url,
+  },
+  areaServed: { '@type': 'Country', name: 'Belgium' },
+  serviceType: 'Personeelsplanning-software',
+};
+
+const faqSchemaItems = [
+  {
+    q: `Is Seizoensplanner voor ${segment.shortLabel} al beschikbaar?`,
+    a: 'Nee, we zijn in beta. Schrijf je in voor vroege toegang en krijg 50% early-bird korting bij launch.',
+  },
+  {
+    q: `Wat maakt dit anders dan een algemene planning-tool?`,
+    a: `We plannen op maand- en seizoens-niveau met sector-specifieke data voor ${segment.shortLabel}, niet dag-planning zoals Strobbo of Shyfter.`,
+  },
+  {
+    q: `Is dit Belgisch-fiscaal correct?`,
+    a: 'Ja. We rekenen met flexi, 475u-quotum student, gelegenheidsarbeid, RSZ-bijdragen en PC-minimumlonen. Bronnen: RSZ, FOD WASO, Securex, Acerta.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqSchemaItems.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<BaseLayout
+  title={segment.metaTitle}
+  description={segment.metaDescription}
+  ogImage={`/og/og-${segment.slug}.svg`}
+  schema={[serviceSchema, faqSchema]}
+>
+  <slot />
+</BaseLayout>
