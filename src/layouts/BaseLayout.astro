@@ -34,10 +34,10 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Host-onafhankelijke security-baseline. GitHub Pages negeert public/_headers,
-         dus zetten we de CSP-fetch-directives hier zodat ze overal gelden. HSTS,
-         frame-ancestors en Permissions-Policy kunnen niet via <meta> en staan in
-         public/_headers (actief zodra de site achter Cloudflare/Netlify draait). -->
+    <!-- Host-independent security baseline. GitHub Pages ignores public/_headers, so we set
+         the CSP fetch-directives here so they apply everywhere. HSTS, frame-ancestors and
+         Permissions-Policy can't be set via <meta> and live in public/_headers (active once
+         the site sits behind a header-respecting host like Cloudflare/Netlify). -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'"
@@ -67,9 +67,9 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
       <script type="application/ld+json" set:html={JSON.stringify(s)} />
     ))}
 
-    <!-- Cloudflare Web Analytics (gratis, cookieloos, GDPR-vriendelijk).
-         Laadt enkel wanneer SITE.CF_BEACON_TOKEN ingevuld is — anders géén beacon.
-         Token aanmaken: dash.cloudflare.com → Web Analytics → Add a site. -->
+    <!-- Cloudflare Web Analytics (free, cookieless, privacy-friendly).
+         Loads only when SITE.CF_BEACON_TOKEN is set — otherwise no beacon at all.
+         Create a token: dash.cloudflare.com → Web Analytics → Add a site. -->
     {SITE.CF_BEACON_TOKEN && (
       <script
         defer
