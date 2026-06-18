@@ -1,21 +1,22 @@
 ---
 import TrustBadges from './TrustBadges.astro';
-import ForecastChart from '../assets/mockups/forecast-chart.astro';
+import HeroVisual from './HeroVisual.astro';
 ---
 <section class="relative overflow-hidden bg-gradient-to-b from-white to-primary/5">
-  <div class="container-x grid items-center gap-12 py-20 sm:py-24 lg:grid-cols-2 lg:py-28">
+  <div class="container-x grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:py-24">
     <div>
-      <span class="eyebrow">Beta — vroege toegang</span>
+      <span class="eyebrow">The planning layer above your scheduler</span>
       <h1 class="h1 mt-3 text-primary">
-        Stop met personeel plannen op gevoel en "vorig jaar ook".
+        Your scheduler staffs this week. Aheadcount sizes your whole season — and dates your hires.
       </h1>
       <p class="mt-6 text-lg text-primary/70">
-        Data-gedreven FTE-forecast voor seizoensgebonden Belgische bedrijven.
-        Weer + evenementen + jouw historie + sector-benchmarks gecombineerd in één planning-tool.
+        Every rostering app answers "who works this week?" Aheadcount answers the question they skip:
+        <span class="font-semibold text-primary">how big does my crew need to get, and when do I start hiring to be ready?</span>
+        Forecast your season, size the crew, date your hires, and project the labor cost — in minutes, no spreadsheet.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="#lead" class="btn-primary">Schrijf me in voor vroege toegang</a>
-        <a href="#how" class="btn-secondary">Hoe het werkt</a>
+        <a href="#demo" class="btn-primary">Try the live planner</a>
+        <a href="#how" class="btn-secondary">See how it works</a>
       </div>
       <div class="mt-8">
         <TrustBadges />
@@ -23,9 +24,9 @@ import ForecastChart from '../assets/mockups/forecast-chart.astro';
     </div>
     <div class="relative">
       <div class="rounded-2xl border border-primary/10 bg-white p-4 shadow-xl">
-        <ForecastChart />
+        <HeroVisual />
       </div>
-      <p class="mt-2 text-right text-xs text-primary/50">Illustratief dashboard — beta</p>
+      <p class="mt-2 text-right text-xs text-primary/50">Live, computed output — try it below</p>
     </div>
   </div>
 </section>

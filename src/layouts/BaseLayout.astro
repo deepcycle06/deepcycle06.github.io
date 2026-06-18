@@ -28,7 +28,7 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!doctype html>
-<html lang="nl-BE">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -45,7 +45,7 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="alternate" hreflang="nl-BE" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={canonicalUrl} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
 
     <meta property="og:type" content="website" />
@@ -53,7 +53,7 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={new URL(ogImage, SITE.url).toString()} />
-    <meta property="og:locale" content="nl_BE" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content={SITE.name} />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -79,7 +79,7 @@ const schemaList = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     )}
   </head>
   <body class="flex min-h-screen flex-col">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-white">Ga naar hoofdinhoud</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-accent focus:px-3 focus:py-2 focus:text-white">Skip to main content</a>
     <Header />
     <main id="main" class="flex-1">
       <slot />

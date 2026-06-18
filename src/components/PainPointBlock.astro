@@ -1,5 +1,9 @@
 ---
-import type { PainPoint } from '../data/segments';
+export interface PainPoint {
+  title: string;
+  body: string;
+  source?: string;
+}
 
 export interface Props {
   title?: string;
@@ -7,7 +11,7 @@ export interface Props {
   items: PainPoint[];
 }
 
-const { title = 'Het kernprobleem', eyebrow = 'Waarom dit', items } = Astro.props;
+const { title = 'The core problem', eyebrow = 'Why this', items } = Astro.props;
 ---
 <section class="section bg-primary/5">
   <div class="container-x">
@@ -21,7 +25,7 @@ const { title = 'Het kernprobleem', eyebrow = 'Waarom dit', items } = Astro.prop
           </div>
           <h3 class="mt-4 text-lg font-semibold">{p.title}</h3>
           <p class="mt-2 text-sm text-primary/70">{p.body}</p>
-          <p class="mt-4 text-xs text-primary/50">Bron: {p.source}</p>
+          {p.source && <p class="mt-4 text-xs text-primary/50">{p.source}</p>}
         </article>
       ))}
     </div>

@@ -6,16 +6,17 @@
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <g transform="translate(80,120)">
+  <g transform="translate(80,110)">
     <rect width="56" height="56" rx="12" fill="#2563EB"/>
-    <text x="76" y="38" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="700" fill="#ffffff">Seizoensplanner</text>
+    <text x="76" y="38" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="700" fill="#ffffff">Aheadcount</text>
   </g>
-  <text x="80" y="280" font-family="Inter,system-ui,sans-serif" font-size="64" font-weight="800" fill="#ffffff">Stop met personeel plannen</text>
-  <text x="80" y="360" font-family="Inter,system-ui,sans-serif" font-size="64" font-weight="800" fill="#ffffff">op gevoel.</text>
-  <text x="80" y="440" font-family="Inter,system-ui,sans-serif" font-size="28" font-weight="400" fill="#94a3b8">Data-gedreven FTE-forecast voor Belgische seizoens-KMO's.</text>
-  <g transform="translate(80,510)">
-    <rect width="180" height="48" rx="10" fill="#2563EB"/>
-    <text x="90" y="32" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Beta · vroege toegang</text>
+  <text x="80" y="270" font-family="Inter,system-ui,sans-serif" font-size="58" font-weight="800" fill="#ffffff">Know your peak-season crew</text>
+  <text x="80" y="344" font-family="Inter,system-ui,sans-serif" font-size="58" font-weight="800" fill="#ffffff">size — and hire-by dates.</text>
+  <text x="80" y="416" font-family="Inter,system-ui,sans-serif" font-size="27" font-weight="400" fill="#94a3b8">The staffing-forecast layer above your scheduling app.</text>
+  <g transform="translate(80,486)">
+    <rect width="240" height="48" rx="10" fill="#2563EB"/>
+    <text x="120" y="32" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="18" font-weight="600" fill="#ffffff">Try the live planner</text>
   </g>
-  <polyline points="720,470 780,450 840,410 900,360 960,330 1020,320 1080,340 1140,380" fill="none" stroke="#2563EB" stroke-width="4"/>
+  <polyline points="720,470 780,452 840,408 900,352 960,318 1020,326 1080,300 1140,260" fill="none" stroke="#2563EB" stroke-width="4"/>
+  <circle cx="1080" cy="300" r="7" fill="#059669"/>
 </svg>

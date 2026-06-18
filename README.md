@@ -1,38 +1,41 @@
-# Seizoensplanner — landingspage
+# Aheadcount — seasonal staffing forecast (prototype)
 
-Data-gedreven FTE-planning voor seizoensgebonden Belgische KMO's
-(horeca, kust-toerisme, tuinbouw, events). Statische fake-door-landingspage
-in de validatie-fase.
+The planning layer above your scheduler: forecast seasonal demand 12 months out,
+size the crew you need each month, and get hire-by dates — with a live, in-browser
+forecasting engine (not a mockup).
 
 ## Stack
 
 - **Astro 5** (static site) + **React islands** + **Tailwind CSS 3**
-- **Hosting:** GitHub Pages (gratis), auto-deploy via GitHub Actions
-- **Analytics:** Cloudflare Web Analytics (gratis, cookieloos)
-- **Formulier:** Formspree (gratis tier)
+- **Hosting:** GitHub Pages (free), auto-deploy via GitHub Actions
+- **Analytics:** Cloudflare Web Analytics (free, cookieless)
+- **Form:** Formspree (free tier)
 
-## Lokaal draaien
+## Run locally
 
 ```bash
 npm install
-npm run dev      # dev-server op http://localhost:4321
-npm run build    # productie-build naar dist/
-npm run preview  # preview van de build
+npm run dev      # dev server at http://localhost:4321
+npm run build    # production build to dist/
+npm run preview  # preview the build
 ```
 
 ## Deploy
 
-Elke push naar `main` bouwt de site en publiceert `dist/` naar GitHub Pages
-via `.github/workflows/deploy.yml`. Geen handmatige stap nodig.
+Every push to `main` builds the site and publishes `dist/` to GitHub Pages via
+`.github/workflows/deploy.yml`. No manual step.
 
-## Configuratie
+## Configuration
 
-Eén bestand stuurt host + meet-stack aan: [`src/config/site.ts`](src/config/site.ts).
+One file drives host + measurement stack: [`src/config/site.ts`](src/config/site.ts).
 
-- `url` — live-adres (canonical / OG / sitemap)
-- `FORMSPREE_ID` — Formspree endpoint-ID voor de signups
-- `CF_BEACON_TOKEN` — Cloudflare Web Analytics beacon-token
+- `url` — live address (canonical / OG / sitemap)
+- `FORMSPREE_ID` — Formspree endpoint ID for sign-ups
+- `CF_BEACON_TOKEN` — Cloudflare Web Analytics beacon token
 
-## Licentie
+The forecasting engine lives in `src/lib/engine.ts` (pure, client-side) and the
+interactive demo in `src/components/DemoPlanner.tsx`.
 
-Privaat project. Alle rechten voorbehouden.
+## License
+
+Private project. All rights reserved.

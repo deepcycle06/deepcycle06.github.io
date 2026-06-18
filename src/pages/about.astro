@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+<BaseLayout
+  title={`About | ${SITE.name}`}
+  description="Why Aheadcount exists: the planning layer above your scheduler, for seasonal operators who get caught short or overstaffed every peak."
+>
+  <article class="section">
+    <div class="container-x prose prose-slate max-w-3xl">
+      <h1>About {SITE.name}</h1>
+      <p>
+        Every seasonal operator knows the two failure modes: walking into the peak understaffed, or carrying spare
+        crew through the dead months. Both cost real money, and both come from the same gap — deciding
+        <em>how many</em> people you'll need, and <em>when</em> to start hiring, months before the season.
+      </p>
+      <p>
+        Scheduling tools (Deputy, 7shifts, Homebase, Sling, Planday) are good at the weekly roster, but they start from
+        the staff you already have. Enterprise workforce-planning suites do the forward planning, but they're built for
+        large chains and priced accordingly. {SITE.name} is the missing middle: a five-minute, preset-driven planner that
+        forecasts your season, sizes your crew, dates your hires and projects your labor cost — then hands the plan to
+        whatever scheduler you already use.
+      </p>
+
+      <h2>How we think about it</h2>
+      <p>
+        We're deliberately honest about what a forecast is. The engine is a transparent model calibrated from your own
+        numbers, not a black box — every figure on screen is arithmetic you can check. We'd rather show you a planning
+        range you trust than a confident prediction you don't.
+      </p>
+      <p>
+        This is an early prototype. The forecasting engine is real and live; saving, export, scenarios and importing your
+        own history are what the paid tiers will add. We're building in the open and the beta list helps decide the order.
+      </p>
+
+      <h2>What's deliberately out of scope (for now)</h2>
+      <ul>
+        <li>Country-specific tax or contract rules — the engine is global by design.</li>
+        <li>Weather/event data feeds and cross-customer benchmarks — a future roadmap item, not a current claim.</li>
+        <li>Day-to-day rostering — that's your scheduler's job; we feed it.</li>
+      </ul>
+
+      <h2>Get in touch</h2>
+      <p>
+        Questions, feedback or a season you'd like us to sanity-check? Email
+        <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> or
+        <a href="/#lead">join the beta</a>.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

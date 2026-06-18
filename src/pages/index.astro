@@ -1,61 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import SegmentTiles from '../components/SegmentTiles.astro';
+import WedgeContrast from '../components/WedgeContrast.astro';
 import PainPointBlock from '../components/PainPointBlock.astro';
+import HowItWorks from '../components/HowItWorks.astro';
 import FeatureList from '../components/FeatureList.astro';
-import MockupGallery from '../components/MockupGallery.astro';
+import IndustriesSection from '../components/IndustriesSection.astro';
 import PricingCards from '../components/PricingCards.astro';
 import FAQSection from '../components/FAQSection.astro';
+import DemoPlanner from '../components/DemoPlanner.tsx';
 import LeadForm from '../components/LeadForm.tsx';
 import { SITE } from '../config/site';
 
-const kernProblem = [
+const painItems = [
   {
-    title: 'Overbezetting in laagseizoen',
-    body:
-      '1 FTE te veel gedurende 1 maand in een €50K-omzet-bar = ~€3.000 weggegooide loonkost. Over een volledig jaar loopt "vorig jaar ook"-planning snel op tot €8.000-15.000 verlies.',
-    source: 'Lightspeed × Zenchef BE-onderzoek 2024',
+    title: 'Understaffed at the peak',
+    body: 'You limp into your busiest weeks at 70% crew. Missed covers, burned-out staff, reviews you can\'t undo — and the revenue you lose in peak weeks you never get back.',
   },
   {
-    title: 'Onderbezetting op piek-dagen',
-    body:
-      'Een kermis of warm weekend zonder extra volk: 15-25% omzet-verlies door trage service, boze gasten, slechte reviews. Tot €1.500 per mis-dag.',
-    source: 'L1NDA / Horeca Magazine, 2024-2025',
+    title: 'Overstaffed in the off-season',
+    body: 'You keep people on "just in case" through the quiet months and bleed payroll every week the demand simply isn\'t there.',
   },
   {
-    title: 'Aanwerving die te laat start',
-    body:
-      'Horeca-vacatures staan gemiddeld 187 dagen open. Te laat publiceren = begin seizoen met 70% bezetting = 10-20% omzet-verlies in mei-juni.',
-    source: 'Horeca Webzine, 2025 · VDAB Knelpuntberoepen',
+    title: 'Hiring too late',
+    body: 'You post the jobs the week you\'re already drowning — when every other seasonal employer is chasing the same people, and the good ones are long gone.',
   },
 ];
 
-const productFeatures = [
+const pillars = [
   {
-    title: 'Maand-per-maand forecast',
-    body:
-      'Geen één-getal-per-jaar, maar een curve die jouw werkelijke seizoensvorm volgt — met betrouwbaarheidsband op elk punt.',
+    title: 'Forecast the season, not the week',
+    body: 'Pick your business type and we build a 12-month demand curve — peak timing, intensity and the wobble around it — then turn it into how many people you\'ll need each month.',
   },
   {
-    title: 'Weer + events + historie gecombineerd',
-    body:
-      'KMI-weerdata, schoolvakanties, lokale events en jouw eigen 2 jaar historie vormen samen één forecast. Geen zwarte doos.',
+    title: 'Hire before the rush, not during it',
+    body: 'Tell us your hiring lead time and we work backward: "Start hiring by early March — add 3 for your May–July peak." No more posting jobs the week you\'re already underwater, when the good people are gone.',
   },
   {
-    title: 'Belgisch-fiscaal correct',
-    body:
-      'Flexi, student 475u, gelegenheidsarbeid, RSZ-bijdragen per type, PC-minimumlonen. Bronnen met datum bij elke regel.',
+    title: 'See the gaps and the waste',
+    body: 'We line the crew you\'ll need against the crew you have and flag both: the months you\'ll be short, and the months you\'re carrying payroll you don\'t need.',
   },
   {
-    title: 'Aanwervings-timing terug-gerekend',
-    body:
-      'Vanaf wanneer publiceren om op 1 juli klaar te zijn met 12 studenten? De tool rekent leadtime + reply-rate + onboarding terug.',
-  },
-  {
-    title: 'Cash-flow-impact in één scherm',
-    body:
-      'Omzet - vaste kosten - loonkost per maand. Zie op voorhand welke nulomzet-maand je moet overbruggen.',
+    title: 'A labor-cost plan you can defend',
+    body: 'A month-by-month cost projection in your currency, with what you save versus your current plan — numbers and dates you can hand to a partner or a bank.',
   },
 ];
 
@@ -63,103 +50,85 @@ const homepageSchema = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Seizoensplanner',
+    name: SITE.name,
     url: SITE.url,
-    inLanguage: 'nl-BE',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Seizoensplanner',
-    url: SITE.url,
-    email: SITE.contactEmail,
-    areaServed: 'Belgium',
+    inLanguage: 'en',
   },
   {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'Seizoensplanner',
+    name: SITE.name,
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web',
+    description: SITE.description,
     offers: [
-      {
-        '@type': 'Offer',
-        name: 'Starter',
-        price: '79',
-        priceCurrency: 'EUR',
-        category: 'OneTime',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Pro',
-        price: '49',
-        priceCurrency: 'EUR',
-        category: 'Subscription',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Team',
-        price: '99',
-        priceCurrency: 'EUR',
-        category: 'Subscription',
-      },
+      { '@type': 'Offer', name: 'Season Plan', price: '59', priceCurrency: 'USD', category: 'OneTime' },
+      { '@type': 'Offer', name: 'Pro', price: '39', priceCurrency: 'USD', category: 'Subscription' },
+      { '@type': 'Offer', name: 'Multi-Site', price: '89', priceCurrency: 'USD', category: 'Subscription' },
     ],
   },
 ];
 ---
 
 <BaseLayout
-  title="Seizoensplanner — FTE-forecast voor Belgische seizoensbedrijven"
-  description="Data-gedreven FTE-planning voor Belgische KMO's in horeca, kust & toerisme, tuinbouw en events. Maand-per-maand loonkost, Belgisch-fiscaal correct. Beta."
+  title="Aheadcount — seasonal staffing forecast & hire-by dates"
+  description="Aheadcount forecasts your seasonal demand 12 months out, sizes the crew you need each month, and tells you exactly when to start hiring — the planning layer above your scheduling app."
   schema={homepageSchema}
 >
   <Hero />
-  <SegmentTiles />
+  <WedgeContrast />
   <PainPointBlock
-    title="Planning op gevoel kost een Belgische seizoens-KMO €8.000-15.000 per jaar."
-    eyebrow="Het kernprobleem"
-    items={kernProblem}
+    eyebrow="The core problem"
+    title="Planning seasonal staff on gut feel costs you twice — once short, once spare."
+    items={painItems}
   />
+  <HowItWorks />
+
+  <section class="section bg-white" id="demo">
+    <div class="container-x">
+      <span class="eyebrow">Live demo · runs in your browser</span>
+      <h2 class="h2 mt-2 max-w-3xl">Try it with your own numbers.</h2>
+      <p class="mt-4 max-w-2xl text-primary/70">
+        This is the real engine — not a screenshot. Change any input and the forecast, staffing gap, hiring dates and
+        cost update instantly. It starts on the Bayside Beach Cafe example from above.
+      </p>
+      <div class="mt-10">
+        <DemoPlanner client:visible />
+      </div>
+      <p class="mt-6 text-sm text-primary/55">
+        Saving scenarios, PDF export and importing your own history are what the paid tiers add —
+        <a href="#lead" class="text-accent underline">join the beta</a> to help decide what we build first.
+      </p>
+    </div>
+  </section>
+
   <FeatureList
-    title="Wat Seizoensplanner voor jou berekent."
-    eyebrow="De belofte"
-    items={productFeatures}
+    eyebrow="What you get"
+    title="Four things your spreadsheet and your scheduler don't give you."
+    items={pillars}
   />
-  <MockupGallery />
+  <IndustriesSection />
   <PricingCards segment="homepage" />
   <FAQSection />
 
   <section class="section bg-white" id="lead">
     <div class="container-x grid gap-10 lg:grid-cols-2">
       <div class="max-w-xl">
-        <span class="eyebrow">Vroege toegang</span>
-        <h2 class="h2 mt-2">Sluit aan bij de beta.</h2>
+        <span class="eyebrow">Early access</span>
+        <h2 class="h2 mt-2">Join the beta.</h2>
         <p class="mt-4 text-primary/70">
-          We openen de beta in golven. Inschrijven kost niets en verbindt je tot niets. Beta-klanten krijgen 50% early-bird korting op het eerste jaar (Pro/Team) of eenmalig (Starter), én mogen mee bepalen welke sector-varianten we eerst uitbouwen.
+          The forecasting engine is live today. The beta adds saving, export, scenarios and your-own-data import.
+          Signing up costs nothing and commits you to nothing — and beta sign-ups get a founding-customer discount at launch.
         </p>
         <ul class="mt-6 space-y-2 text-sm text-primary/70">
-          <li>Geen spam, geen verkoop aan derden.</li>
-          <li>Alleen updates als er iets concreets te melden is.</li>
-          <li>Uitschrijven in één klik, altijd.</li>
+          <li>No spam, no selling your data.</li>
+          <li>Updates only when there's something real to share.</li>
+          <li>Unsubscribe in one click, always.</li>
         </ul>
       </div>
       <div class="card">
         <LeadForm client:load segment="homepage" />
       </div>
-    </div>
-  </section>
-
-  <section class="section bg-primary/5" id="over">
-    <div class="container-x max-w-3xl">
-      <span class="eyebrow">Over Seizoensplanner</span>
-      <h2 class="h2 mt-2">Gebouwd in Vlaanderen, voor Belgische seizoens-KMO's.</h2>
-      <p class="mt-4 text-primary/70">
-        Seizoensplanner is een project van een individuele ondernemer in Vlaanderen die zelf jaren met "vorig jaar ook"-planning worstelde.
-        We bouwen bewust klein en transparant: geen VC-druk, geen feature-overload, gewoon de planning-data die je vandaag mist.
-      </p>
-      <p class="mt-4 text-primary/70">
-        Meer over de aanpak en contact op <a class="underline text-accent" href="/over-ons/">de over-pagina</a>.
-      </p>
     </div>
   </section>
 </BaseLayout>

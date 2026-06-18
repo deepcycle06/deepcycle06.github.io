@@ -1,66 +1,61 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../config/site';
-const updated = '2026-04-13';
+const updated = '2026-06-18';
 ---
 <BaseLayout
-  title="Privacy-beleid | Seizoensplanner"
-  description="Hoe Seizoensplanner persoonsgegevens verwerkt volgens GDPR. Geen tracking-cookies, EU-hosting, minimale dataverwerking."
+  title={`Privacy policy | ${SITE.name}`}
+  description="How Aheadcount handles personal data: no tracking cookies, demo runs in your browser, minimal data collection."
 >
   <article class="section">
     <div class="container-x prose prose-slate max-w-3xl">
-      <h1>Privacy-beleid</h1>
-      <p><em>Laatste update: {updated}</em></p>
+      <h1>Privacy policy</h1>
+      <p><em>Last updated: {updated}</em></p>
 
-      <h2>1. Wie zijn wij?</h2>
+      <h2>1. Who we are</h2>
       <p>
-        Seizoensplanner is een onafhankelijke website, gevestigd in {SITE.controllerLocation}.
-        De uitbater van Seizoensplanner is verwerkingsverantwoordelijke in de zin van de Algemene Verordening Gegevensbescherming (AVG/GDPR).
-        Je bereikt ons via <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
+        {SITE.name} is an independent prototype operated from {SITE.controllerLocation}. The operator of {SITE.name}
+        is the data controller under the GDPR. You can reach us at <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.
       </p>
 
-      <h2>2. Welke gegevens verwerken we?</h2>
+      <h2>2. What we collect</h2>
       <ul>
-        <li><strong>Inschrijvingen vroege toegang:</strong> e-mail, optioneel bedrijfsnaam/sector, segment-keuze, intent-niveau (Starter/Pro/Team), referrer en UTM-parameters voor bron-analyse.</li>
-        <li><strong>Site-analytics:</strong> geaggregeerde en gepseudonimiseerde bezoekstatistieken via Cloudflare Web Analytics. Geen cookies, geen persoonsidentificeerbare IP-opslag.</li>
-        <li><strong>Contact-mail:</strong> de inhoud van e-mails die je naar ons verstuurt.</li>
+        <li><strong>Beta sign-ups:</strong> your email, optional business/industry, and the segment/intent of your interest, plus referrer and UTM parameters for source analysis.</li>
+        <li><strong>The planner demo:</strong> nothing. Everything you type into the demo is computed in your browser and never sent to us.</li>
+        <li><strong>Site analytics:</strong> aggregated, pseudonymized visit statistics via Cloudflare Web Analytics. No cookies, no personally identifiable IP storage.</li>
       </ul>
 
-      <h2>3. Waarom verwerken we deze gegevens?</h2>
+      <h2>3. Why we process it</h2>
       <ul>
-        <li>Je op de hoogte brengen van de beta-launch (grondslag: toestemming).</li>
-        <li>Meten welke sector-varianten het meest gevraagd zijn (grondslag: gerechtvaardigd belang).</li>
-        <li>Beantwoorden van je vragen (grondslag: uitvoering overeenkomst / gerechtvaardigd belang).</li>
+        <li>To tell you when the beta opens (basis: consent).</li>
+        <li>To learn which industries and tiers are most wanted (basis: legitimate interest).</li>
+        <li>To answer your questions (basis: legitimate interest / pre-contract).</li>
       </ul>
 
-      <h2>4. Hoe lang bewaren we ze?</h2>
-      <p>
-        E-mailadressen worden bewaard tot je uitschrijft of tot 24 maanden na de laatste interactie.
-        Analytics-gegevens worden geaggregeerd maximaal 24 maanden bewaard.
-      </p>
+      <h2>4. How long we keep it</h2>
+      <p>Emails are kept until you unsubscribe or up to 24 months after your last interaction. Analytics are aggregated and kept for at most 24 months.</p>
 
-      <h2>5. Met wie delen we gegevens?</h2>
+      <h2>5. Who we share it with</h2>
       <ul>
-        <li><strong>Formspree</strong> (formulier-verwerking) — EU/US, onder Data Processing Agreement.</li>
-        <li><strong>Cloudflare Web Analytics</strong> — cookieloze bezoekstatistieken, geen persoonsgegevens doorgegeven.</li>
-        <li><strong>GitHub Pages</strong> (GitHub Inc.) — statische hosting van deze website.</li>
+        <li><strong>Formspree</strong> (form processing) — under a data processing agreement.</li>
+        <li><strong>Cloudflare Web Analytics</strong> — cookieless visit statistics; no personal data passed.</li>
+        <li><strong>GitHub Pages</strong> (GitHub Inc.) — static hosting of this site.</li>
       </ul>
-      <p>We verkopen of verhuren geen persoonsgegevens aan derden. Ooit. Punt.</p>
+      <p>We never sell or rent personal data. Ever.</p>
 
-      <h2>6. Jouw rechten (AVG)</h2>
+      <h2>6. Your rights (GDPR)</h2>
       <ul>
-        <li>Recht op inzage, rectificatie, verwijdering (uitschrijven).</li>
-        <li>Recht op beperking en bezwaar.</li>
-        <li>Recht op overdraagbaarheid van je gegevens.</li>
-        <li>Recht om een klacht in te dienen bij de <a href="https://www.gegevensbeschermingsautoriteit.be">Gegevensbeschermingsautoriteit</a>.</li>
+        <li>Access, rectification and erasure (unsubscribe).</li>
+        <li>Restriction and objection.</li>
+        <li>Data portability.</li>
       </ul>
-      <p>Mail ons op <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> om een recht uit te oefenen. We antwoorden binnen 30 dagen.</p>
+      <p>Email <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a> to exercise a right. We respond within 30 days.</p>
 
-      <h2>7. Beveiliging</h2>
-      <p>Statische hosting via GitHub Pages met TLS (HTTPS) op alle verkeer. Geen klantdata in beta-fase buiten e-mail-inschrijvingen.</p>
+      <h2>7. Security</h2>
+      <p>Static hosting over TLS (HTTPS) on all traffic. No customer business data is stored on our servers — the planner runs entirely in your browser.</p>
 
-      <h2>8. Wijzigingen</h2>
-      <p>We kunnen dit beleid aanpassen. Grote wijzigingen melden we per e-mail aan ingeschreven gebruikers.</p>
+      <h2>8. Changes</h2>
+      <p>We may update this policy. We'll email signed-up users about significant changes.</p>
     </div>
   </article>
 </BaseLayout>

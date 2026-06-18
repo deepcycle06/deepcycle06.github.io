@@ -1,0 +1,78 @@
+---
+// One continuous worked example. Every number here equals the demo's default state
+// below, so a skeptic can trace inputs → engine → output without anything drifting.
+---
+<section class="section bg-primary/5" id="how">
+  <div class="container-x">
+    <span class="eyebrow">How it works</span>
+    <h2 class="h2 mt-2 max-w-3xl">One example, start to finish. No black box.</h2>
+    <p class="mt-4 max-w-2xl text-primary/70">
+      Follow <strong>Bayside Beach Cafe</strong> through every step — the same numbers you'll see pre-filled in the live demo below.
+      Where the forecast comes from, why it says 12 staff, and how it picks the hire-by date: all shown in the open.
+    </p>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-2">
+      <!-- Step 1 -->
+      <article class="card">
+        <div class="flex items-center gap-2">
+          <span class="badge bg-accent/10 text-accent">Step 1 · Inputs</span>
+          <span class="text-xs text-primary/45">~3 min, things you already know</span>
+        </div>
+        <h3 class="mt-3 text-lg font-semibold">Five numbers, no payroll login</h3>
+        <ul class="mt-3 space-y-1.5 text-sm text-primary/75">
+          <li>· Business type: <strong>beachfront cafe &amp; bar</strong> (a seasonal preset)</li>
+          <li>· Peak month: <strong>July</strong>, a sharp summer season</li>
+          <li>· Staff today: <strong>4</strong> in the quiet month, <strong>12</strong> at peak</li>
+          <li>· You currently carry <strong>9</strong> most of the year</li>
+          <li>· Hiring takes <strong>~8 weeks</strong> to a trained hire · <strong>$3,200</strong>/staff/month</li>
+        </ul>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="card">
+        <span class="badge bg-accent/10 text-accent">Step 2 · The engine</span>
+        <h3 class="mt-3 text-lg font-semibold">Three plain equations, your numbers</h3>
+        <div class="mt-3 space-y-2 text-sm">
+          <div class="rounded-lg bg-primary/[0.03] p-3">
+            <p class="text-primary/60">Forecast</p>
+            <p class="font-medium text-primary">summer preset × your peak → demand index, <span class="tabular-nums">July = 98</span> of 100</p>
+          </div>
+          <div class="rounded-lg bg-accent/5 p-3">
+            <p class="text-primary/60">Demand → staff <span class="text-accent">(calibrated from your two numbers)</span></p>
+            <p class="font-medium text-primary tabular-nums">(12 − 4) ÷ (98 − 15) = 0.10 staff per point → July 98 ⇒ ~12 staff</p>
+            <p class="mt-1 text-xs text-primary/50">15 = your quiet-month index (the curve's low point) · 98 = your July peak</p>
+          </div>
+          <div class="rounded-lg bg-primary/[0.03] p-3">
+            <p class="text-primary/60">Gap &amp; hire-by</p>
+            <p class="font-medium text-primary tabular-nums">need 12 − have 9 = short up to 3 (May–Jul) · May 1 − 8 weeks ⇒ hire by early March</p>
+          </div>
+        </div>
+        <p class="mt-3 text-xs text-primary/50">The multiplier is <em>your</em> ratio, derived in the open — override any of it.</p>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="card">
+        <span class="badge bg-accent/10 text-accent">Step 3 · Output</span>
+        <h3 class="mt-3 text-lg font-semibold">A plan you can act on</h3>
+        <ul class="mt-3 space-y-2 text-sm text-primary/75">
+          <li>📈 <strong>Demand forecast</strong> with an 80% planning band (wider at the volatile peak).</li>
+          <li>📊 <strong>Required vs current</strong>: short <strong class="text-warning">up to 3 from May to July</strong>, carrying spare crew most of winter.</li>
+          <li>🗓️ <strong>Hiring timeline</strong>: "Start hiring by early March — up to +3 for May–July."</li>
+          <li>💶 <strong>Cost</strong>: ~<strong class="text-success">$60,800/yr</strong> saved vs your flat plan (≈$176k vs staffing for peak all year).</li>
+        </ul>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="card">
+        <span class="badge bg-accent/10 text-accent">Step 4 · Workflow</span>
+        <h3 class="mt-3 text-lg font-semibold">A living plan, not a one-off PDF</h3>
+        <p class="mt-3 text-sm text-primary/75">
+          Move one knob — bump the peak, add a festival weekend, change your lead time — and the demand curve,
+          required staff, the gap and the hire-by date all update instantly. Re-check monthly as bookings firm up;
+          the forecast tightens and the dates lock in.
+        </p>
+        <a href="#demo" class="btn-primary mt-5 inline-flex">Try it with your own numbers ↓</a>
+      </article>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+const rows = [
+  { dim: 'Core job', them: 'Build this week\'s shift roster from the staff you have', us: 'Decide how many people you\'ll need each month — and when to hire' },
+  { dim: 'Time horizon', them: 'Days to ~4 weeks out', us: '12 months ahead — the whole season' },
+  { dim: 'Works from day one', them: 'Needs POS / sales history + integrations', us: 'Pick a preset or type your numbers — no data plumbing' },
+  { dim: 'Hiring lead time', them: 'Bolted on at best — never tied to a season-long crew forecast', us: '"Start hiring by <date>, +N staff for your peak"' },
+  { dim: 'The output', them: 'A published schedule people clock into', us: 'A forecast, a staffing plan and a hiring timeline you act on' },
+];
+---
+<section class="section bg-white" id="why">
+  <div class="container-x">
+    <span class="eyebrow">Why it's different</span>
+    <h2 class="h2 mt-2 max-w-3xl">Not another scheduling app. The layer above it.</h2>
+    <p class="mt-4 max-w-2xl text-primary/70">
+      Deputy, 7shifts, Sling, Homebase and Planday are great at the weekly roster — and assume the staff already exist.
+      Aheadcount sits upstream and decides how big the team needs to get, and by when.
+    </p>
+
+    <div class="mt-10 overflow-hidden rounded-2xl border border-primary/10">
+      <div class="grid grid-cols-3 bg-primary/[0.03] text-sm font-semibold">
+        <div class="px-4 py-3 text-primary/50"></div>
+        <div class="px-4 py-3 text-primary/70">Scheduling apps</div>
+        <div class="px-4 py-3 text-accent">Aheadcount</div>
+      </div>
+      {rows.map((r, i) => (
+        <div class={`grid grid-cols-3 text-sm ${i % 2 ? 'bg-white' : 'bg-primary/[0.015]'}`}>
+          <div class="border-t border-primary/10 px-4 py-3 font-medium text-primary/70">{r.dim}</div>
+          <div class="border-t border-primary/10 px-4 py-3 text-primary/60">{r.them}</div>
+          <div class="border-t border-primary/10 px-4 py-3 font-medium text-primary">{r.us}</div>
+        </div>
+      ))}
+    </div>
+    <p class="mt-4 text-sm text-primary/50">
+      To be clear: schedulers run the day-to-day roster, clock-ins and shift swaps better than we ever will.
+      Aheadcount just decides <em>how many</em> people that roster needs, and <em>by when</em> — then hands it over. Complementary, not a replacement.
+    </p>
+  </div>
+</section>

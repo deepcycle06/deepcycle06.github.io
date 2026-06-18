@@ -45,8 +45,8 @@ function readIntent(): string {
 
 export default function LeadForm({
   segment = 'homepage',
-  heading = 'Krijg vroege toegang',
-  subheading = 'Laat je e-mail achter en we verwittigen je zodra de beta open gaat. Geen spam, geen verkoop aan derden.',
+  heading = 'Get early access',
+  subheading = 'Leave your email and we\'ll tell you when the beta opens. No spam, no selling your data.',
 }: LeadFormProps) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'ok' | 'error' | 'placeholder'>('idle');
   const [email, setEmail] = useState('');
@@ -134,10 +134,10 @@ export default function LeadForm({
   if (status === 'ok') {
     return (
       <div className="rounded-2xl border border-success/30 bg-success/5 p-6 text-sm text-primary">
-        <h3 className="text-lg font-semibold text-success">Bedankt — je staat op de lijst.</h3>
+        <h3 className="text-lg font-semibold text-success">Thanks — you're on the list.</h3>
         <p className="mt-2 text-primary/80">
-          Je hoort van ons zodra we de beta openen. Geen spam, geen verkoop aan derden.
-          Eventueel vragen we je om één keer kort mee te denken (10 min call, volledig vrijblijvend).
+          You'll hear from us when the beta opens. No spam, no selling your data.
+          We may ask you once to share 10 minutes of feedback (a quick call, no obligation).
         </p>
       </div>
     );
@@ -146,10 +146,10 @@ export default function LeadForm({
   if (status === 'placeholder') {
     return (
       <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6 text-sm text-primary">
-        <h3 className="text-lg font-semibold text-accent">Inschrijvingen openen binnenkort</h3>
+        <h3 className="text-lg font-semibold text-accent">The beta list opens soon</h3>
         <p className="mt-2 text-primary/80">
-          We zetten de wachtlijst zo open. Kom straks nog eens terug om je in te schrijven —
-          dan verwittigen we je zodra de beta start.
+          We're switching the waitlist on shortly. Check back in a moment to sign up —
+          then we'll let you know the moment the beta starts.
         </p>
       </div>
     );
@@ -171,16 +171,16 @@ export default function LeadForm({
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
           className="rounded-lg border border-primary/20 px-3 py-2 text-base text-primary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
-          placeholder="jij@bedrijf.be"
+          placeholder="you@business.com"
         />
       </label>
       <label className="grid gap-1 text-sm">
-        <span className="font-medium text-primary/80">Bedrijf / sector (optioneel)</span>
+        <span className="font-medium text-primary/80">Business / industry (optional)</span>
         <input
           type="text"
           name="company"
           className="rounded-lg border border-primary/20 px-3 py-2 text-base text-primary focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30"
-          placeholder="Bv. strandbar De Haan, 8 wn"
+          placeholder="e.g. Bayside Beach Cafe, 9 staff"
         />
       </label>
 
@@ -202,14 +202,14 @@ export default function LeadForm({
         disabled={status === 'loading'}
         className="btn-primary disabled:opacity-60"
       >
-        {status === 'loading' ? 'Versturen…' : 'Schrijf me in voor vroege toegang'}
+        {status === 'loading' ? 'Sending…' : 'Join the beta list'}
       </button>
       {status === 'error' && (
-        <p className="text-sm text-warning">Er ging iets mis. Probeer opnieuw of mail naar {SITE.contactEmail}.</p>
+        <p className="text-sm text-warning">Something went wrong. Try again, or email {SITE.contactEmail}.</p>
       )}
       <p className="text-xs text-primary/50">
-        Door in te schrijven ga je akkoord met ons <a className="underline" href="/privacy/">privacy-beleid</a>.
-        Je kan je op elk moment uitschrijven.
+        By signing up you agree to our <a className="underline" href="/privacy/">privacy policy</a>.
+        You can unsubscribe at any time.
       </p>
     </form>
   );

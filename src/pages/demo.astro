@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DemoPlanner from '../components/DemoPlanner.tsx';
+import { SITE } from '../config/site';
+---
+<BaseLayout
+  title={`Live planner | ${SITE.name}`}
+  description="The Aheadcount planner, live. Enter your numbers and get a 12-month demand forecast, required staffing, hire-by dates and a labor-cost projection — computed in your browser."
+>
+  <section class="section">
+    <div class="container-x">
+      <span class="eyebrow">Live planner · runs in your browser</span>
+      <h1 class="h1 mt-2 max-w-3xl">Plan your season in three minutes.</h1>
+      <p class="mt-4 max-w-2xl text-lg text-primary/70">
+        Real engine, not a screenshot. Start from your industry or paste your own 12 months, then change any input
+        and watch the forecast, staffing gap, hire-by dates and cost update instantly. Nothing you type leaves your browser.
+      </p>
+      <div class="mt-10">
+        <DemoPlanner client:load />
+      </div>
+      <div class="mt-10 rounded-2xl border border-primary/10 bg-primary/[0.03] p-6 text-center">
+        <p class="text-primary/80">Want to save scenarios, export a PDF plan and import your own history?</p>
+        <a href="/#lead" class="btn-primary mt-4 inline-flex">Join the beta</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

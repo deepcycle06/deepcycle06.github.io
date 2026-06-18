@@ -1,0 +1,39 @@
+---
+import { INDUSTRY_PRESETS, MONTHS } from '../data/industries';
+
+function spark(curve: number[]): string {
+  const W = 120, H = 34;
+  return curve.map((v, i) => `${(i / 11) * W},${H - (v / 100) * (H - 4) - 2}`).join(' ');
+}
+---
+<section class="section bg-white" id="industries">
+  <div class="container-x">
+    <span class="eyebrow">Built for your season</span>
+    <h2 class="h2 mt-2 max-w-3xl">Start from your industry's shape — then make it yours.</h2>
+    <p class="mt-4 max-w-2xl text-primary/70">
+      Each preset is a typical seasonal curve to start from, not a prediction. Tweak the peak, intensity and your own
+      numbers — or paste your last 12 months and the forecast becomes entirely your data.
+    </p>
+
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {INDUSTRY_PRESETS.map((p) => (
+        <article class="card flex flex-col">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="text-base font-semibold text-primary">{p.short}</h3>
+            <svg viewBox="0 0 120 34" class="h-9 w-28 flex-none" aria-hidden="true">
+              <polyline points={spark(p.monthlyCurve)} fill="none" stroke="#2563EB" stroke-width="2" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <p class="mt-2 text-sm text-primary/70">{p.name}</p>
+          <p class="mt-3 text-xs text-primary/55">{p.note}</p>
+          <p class="mt-3 text-xs font-medium text-accent">
+            Peak: {MONTHS[p.monthlyCurve.indexOf(Math.max(...p.monthlyCurve))]} · measures {p.demandUnit}
+          </p>
+        </article>
+      ))}
+    </div>
+    <p class="mt-6 text-sm text-primary/50">
+      Northern hemisphere by default — flip to southern in the planner so your peak lands in the right months.
+    </p>
+  </div>
+</section>

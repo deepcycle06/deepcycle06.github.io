@@ -5,35 +5,35 @@ export interface FAQ {
 
 export const FAQ_ITEMS: FAQ[] = [
   {
-    q: 'Voor wie is Seizoensplanner?',
-    a: 'Belgische KMO\'s met 2 tot 50 werknemers en duidelijke seizoenspieken: horeca, kust & toerisme, tuinbouw, events. Als jouw FTE-behoefte in augustus 3× hoger ligt dan in januari, is dit voor jou.',
+    q: 'Isn\'t this just another scheduling app like Deputy or 7shifts?',
+    a: 'No — and you probably already have one. Those tools build this week\'s roster from the staff you already have. Aheadcount works months upstream: it forecasts how big your crew needs to get across the season and when to start hiring, then hands the plan off to your scheduler. It\'s the layer above the roster, not another roster.',
   },
   {
-    q: 'Is dit al beschikbaar vandaag?',
-    a: 'Nee. We zijn in beta-fase. Schrijf je in voor vroege toegang en je krijgt 50% early-bird korting als we live gaan. Eerste betalende klanten: zomer 2026.',
+    q: 'Where does the forecast actually come from?',
+    a: 'From your own numbers. You start from a typical seasonal shape for your industry and tweak it, or paste your own last 12 months. We size staffing from two real figures you give us — how many people you run in your quiet month and at your peak — so the staffing math is your ratio, shown openly. No black box, no "AI" guessing.',
   },
   {
-    q: 'Wat betekent Belgisch-fiscaal correct?',
-    a: 'We rekenen met flexi-regime horeca, gelegenheidsarbeid (100-dagen-plukkaart), studentencontracten (475u-quotum), RSZ-bijdragen per type contract, Dimona-verplichtingen en PC-gebonden minimumlonen. Bronnen: RSZ, FOD WASO, Securex, Acerta. Laatste check bij elke update gedocumenteerd.',
+    q: 'Do I need to upload payroll data or connect a POS?',
+    a: 'No. The demo runs on a handful of numbers you already know, in about three minutes, with no login or integration. Importing your own history (in Pro) makes the forecast tighter, but it is never required to get a usable plan.',
   },
   {
-    q: 'Hoe verschilt dit van Strobbo, Shyfter of Officient?',
-    a: 'Die tools plannen op dag-niveau (wie werkt morgen). Seizoensplanner plant op maand- en seizoens-niveau: hoeveel FTE heb je in juli nodig, welke mix, en wanneer begin je te werven. Aanvullend, geen vervanging.',
+    q: 'How accurate is a 12-month forecast, really?',
+    a: 'We treat it as a planning range, not a prediction. The shaded band is an 80% planning range driven by the unpredictability you set — wider at your volatile peak, narrower in quiet months. The point is to be roughly right early enough to hire on time, then re-check monthly as bookings firm up.',
   },
   {
-    q: 'Welke data gebruiken jullie voor de forecast?',
-    a: 'Jouw eigen historie (omzet + FTE per maand, ideaal 2 jaar) plus publieke bronnen: KMI weerdata, schoolvakanties, feestdagen, Westtoer toerisme-statistieken, evenementenkalenders, sector-benchmarks. Geen zwarte doos: elk voorstel legt uit waarom.',
+    q: 'What about the "start hiring by" dates?',
+    a: 'We take the month your crew needs to grow and subtract your hiring lead time (posting → hired → trained and productive). It is a planning reminder so you post jobs before the good candidates are gone — not a guarantee that the labor market will deliver them.',
   },
   {
-    q: 'Wat als ik geen 2 jaar historie heb?',
-    a: 'We starten met sector-baselines op basis van jouw locatie, sector en omvang. Na één seizoen met jouw data wordt het model preciezer. Je bent niet afhankelijk van historie om iets bruikbaars te krijgen.',
+    q: 'Is my data stored anywhere?',
+    a: 'The demo computes everything in your browser — nothing you type leaves your device. The only thing we collect is your email, if you choose to join the beta list. No tracking cookies; privacy-friendly aggregate analytics only.',
   },
   {
-    q: 'Is mijn data veilig? GDPR-compliant?',
-    a: 'Ja. Jouw bedrijfsdata blijft van jou. Sector-benchmarks werken alleen op opt-in basis en met anonimisering. Hosting in EU. Details in ons privacy-beleid.',
+    q: 'Does it work outside one country or currency?',
+    a: 'Yes. There are no country-specific tax or contract rules baked in — it is deliberately global. Pick your currency for the cost projection, and choose your hemisphere so the seasonal curve lands in the right months.',
   },
   {
-    q: 'Wat als het niets voor mij blijkt te zijn?',
-    a: 'Starter is eenmalig — geen abonnement. Pro en Team zijn maandelijks opzegbaar. In beta geven we 30 dagen geld-terug-garantie. We willen liever één tevreden klant dan tien ontevreden.',
+    q: 'It\'s a prototype — what works today?',
+    a: 'The forecasting engine is real and live: every chart, gap, hire-by date and cost figure is computed from your inputs right now. Saving, export, scenarios and your-own-data import are what the paid tiers add. Join the beta and you help decide what we build first.',
   },
 ];

@@ -1,0 +1,52 @@
+---
+// Hero illustration: a demand forecast curve with a confidence band, a "hire by"
+// marker placed left of the peak, and a required-staff readout. English, on-brand.
+const months = ['J','F','M','A','M','J','J','A','S','O','N','D'];
+const curve = [15, 18, 28, 42, 60, 80, 95, 98, 72, 48, 30, 38];
+const upper = curve.map((v) => Math.min(110, v + v * 0.16));
+const lower = curve.map((v) => Math.max(0, v - v * 0.16));
+const W = 440, H = 250, padL = 26, padR = 14, padT = 18, padB = 28;
+const plotW = W - padL - padR, plotH = H - padT - padB;
+const x = (i: number) => padL + (i / 11) * plotW;
+const y = (v: number) => padT + (1 - v / 110) * plotH;
+const line = curve.map((v, i) => `${x(i)},${y(v)}`).join(' ');
+const band = upper.map((v, i) => `${i === 0 ? 'M' : 'L'}${x(i)},${y(v)}`).join(' ') + ' ' +
+  [...lower].map((v, i) => ({ v, i })).reverse().map(({ v, i }) => `L${x(i)},${y(v)}`).join(' ') + ' Z';
+const peakI = 7;       // Aug peak
+const hireI = 2.4;     // ~ mid-March, well ahead of the peak (hire-by, not shortage-start)
+---
+<svg viewBox={`0 0 ${W} ${H}`} class="h-auto w-full" role="img"
+  aria-label="Demand forecast curve with a confidence band, a hire-by marker in March well ahead of an August peak requiring 12 staff">
+  <rect width={W} height={H} rx="10" fill="#f8fafc" />
+  {[0,25,50,75,100].map((g) => (
+    <line x1={padL} y1={y(g)} x2={W - padR} y2={y(g)} stroke="#e2e8f0" />
+  ))}
+  <path d={band} fill="#2563EB" fill-opacity="0.12" />
+  <polyline points={line} fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linejoin="round" />
+  {curve.map((v, i) => <circle cx={x(i)} cy={y(v)} r="2.4" fill="#2563EB" />)}
+
+  <!-- hire-by marker -->
+  <line x1={x(hireI)} y1={padT} x2={x(hireI)} y2={H - padB} stroke="#059669" stroke-width="1.4" stroke-dasharray="4 3" />
+  <g transform={`translate(${x(hireI) - 4}, ${padT + 4})`}>
+    <rect x="-58" y="0" width="92" height="18" rx="4" fill="#059669" />
+    <text x="-12" y="13" text-anchor="middle" font-size="9" fill="#ffffff" font-weight="600">Start hiring Mar</text>
+  </g>
+
+  <!-- peak callout -->
+  <g transform={`translate(${x(peakI)}, ${y(curve[peakI])})`}>
+    <circle r="4" fill="#2563EB" />
+    <g transform="translate(-44, -34)">
+      <rect width="88" height="26" rx="5" fill="#0F172A" />
+      <text x="44" y="11" text-anchor="middle" font-size="8.5" fill="#cbd5e1">peak need</text>
+      <text x="44" y="21" text-anchor="middle" font-size="9.5" fill="#ffffff" font-weight="700">+12 staff</text>
+    </g>
+  </g>
+
+  {months.map((m, i) => <text x={x(i)} y={H - 9} text-anchor="middle" font-size="8.5" fill="#94a3b8">{m}</text>)}
+
+  <g transform={`translate(${padL + 6}, ${H - padB - 8})`}>
+    <rect x="0" y="-12" width="120" height="20" rx="5" fill="#ffffff" stroke="#e2e8f0" />
+    <line x1="8" y1="-2" x2="22" y2="-2" stroke="#2563EB" stroke-width="2" />
+    <text x="27" y="1" font-size="8" fill="#64748b">demand forecast + band</text>
+  </g>
+</svg>

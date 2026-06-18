@@ -1,38 +1,29 @@
 export const SITE = {
-  name: 'Seizoensplanner',
-  // Merk-/productdomein (eindbestemming). De site DRAAIT tijdens de validatie-fase
-  // op het gratis interim-adres in `url` hieronder; dit blijft het toekomstige domein.
-  domain: 'seizoensplanner.be',
-  // ── Live-adres van de fake-door ────────────────────────────────────────────
-  // Interim gratis host (GitHub Pages, user-site → root-pad). Stuurt canonical,
-  // OG-URLs, sitemap en Schema.org aan. Wissel deze ÉNE regel naar
-  // 'https://seizoensplanner.be' zodra het echte domein live staat.
+  name: 'Aheadcount',
+  // Brand/product domain (future). The prototype RUNS on the free interim host in `url`.
+  domain: 'aheadcount.com',
+  // ── Live address of the prototype ───────────────────────────────────────────
+  // Interim free host (GitHub Pages user-site → root path). Drives canonical, OG,
+  // sitemap and Schema.org. Swap this ONE line to 'https://aheadcount.com' when the
+  // real domain goes live.
   url: 'https://deepcycle06.github.io',
+  tagline: 'Know your peak-season crew size and hire-by dates, months ahead.',
   description:
-    'Data-gedreven FTE-forecast voor seizoensgebonden Belgische KMO\'s. Weer, events, historie en sector-benchmarks gecombineerd in één planning-tool.',
-  contactEmail: 'hallo@seizoensplanner.be',
-  // Verwerkingsverantwoordelijke (GDPR art. 13): bewust generiek/niet-identificerend
-  // gehouden — geen entiteits- of persoonsnaam, geen adres. Contactkanaal blijft het
-  // site-domein-e-mailadres hierboven.
-  controller: 'de uitbater van Seizoensplanner',
-  controllerLocation: 'België',
-  // KBO/BTW-nummer: bewust niet getoond. Leeg laten — geen registergegeven publiceren
-  // dat naar een onderliggende entiteit verwijst.
-  kboNumber: '',
-  locale: 'nl-BE',
-  // ── Gratis meet-stack ───────────────────────────────────────────────────────
-  // Formspree endpoint-ID (gratis tier, 50 submissions/mnd). Dit is HET kanaal dat
-  // signups + per-segment WtP-signalen vastlegt (segment/intent als hidden fields).
-  // TODO (uitbater): maak 1 gratis form op formspree.io en plak het ID na /f/ hier.
-  // Zolang dit 'REPLACE_ME' is, toont het formulier een nette "binnenkort"-melding
-  // en wordt er niets verstuurd of opgeslagen.
+    'Aheadcount forecasts your seasonal demand 12 months out, sizes the crew you need each month, and tells you exactly when to start hiring — the planning layer above your scheduling app.',
+  contactEmail: 'hello@aheadcount.com',
+  // Data controller (privacy): kept generic — no entity/person name, no address.
+  controller: 'the operator of Aheadcount',
+  controllerLocation: 'the EU/EEA',
+  locale: 'en',
+  // ── Free measurement stack ──────────────────────────────────────────────────
+  // Formspree endpoint-ID (free tier). The channel that captures sign-ups + per-segment
+  // intent (segment/intent hidden fields).
+  // TODO (operator): create 1 free form at formspree.io and paste the ID after /f/ here.
+  // While this is 'REPLACE_ME' the form shows an honest "opening soon" note and stores nothing.
   FORMSPREE_ID: 'REPLACE_ME',
-  // Cloudflare Web Analytics beacon-token (gratis, cookieloos — portfolio-standaard).
-  // Levert pageviews per pagina (= per segment via /voor/[segment]). Geen custom events.
-  // TODO (uitbater): dash.cloudflare.com → Web Analytics → Add a site → vul de live-URL
-  // in → kopieer de "token" uit het beacon-snippet → plak hier. Leeg = beacon laadt niet.
+  // Cloudflare Web Analytics beacon-token (free, cookieless). Pageviews per page.
+  // TODO (operator): dash.cloudflare.com → Web Analytics → Add a site → paste the token.
   CF_BEACON_TOKEN: '',
 } as const;
 
 export type Intent = 'just-interested' | 'starter' | 'pro' | 'team';
-export type SegmentSlug = 'homepage' | 'horeca' | 'kust-toerisme' | 'tuinbouw' | 'events';

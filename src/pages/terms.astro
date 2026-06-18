@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+const updated = '2026-06-18';
+---
+<BaseLayout
+  title={`Terms | ${SITE.name}`}
+  description="Terms of use for the Aheadcount prototype and beta sign-up."
+>
+  <article class="section">
+    <div class="container-x prose prose-slate max-w-3xl">
+      <h1>Terms of use</h1>
+      <p><em>Last updated: {updated}</em></p>
+
+      <h2>1. Prototype status</h2>
+      <p>
+        {SITE.name} is an early-stage prototype offered for evaluation. Features, pricing and availability may change,
+        and paid plans are not yet live — the prices shown are indicative and subject to change before launch.
+      </p>
+
+      <h2>2. The planner is guidance, not advice</h2>
+      <p>
+        The planner produces planning estimates from the numbers you enter, using a transparent model. It is a decision-support
+        aid, not professional, financial, legal or employment advice. Forecasts are planning ranges, not guarantees of demand,
+        cost, or labor availability. You are responsible for your own staffing and hiring decisions.
+      </p>
+
+      <h2>3. Beta sign-up</h2>
+      <p>
+        Joining the beta list means we may email you about the product. You can unsubscribe at any time. We don't sell or
+        rent your data — see our <a href="/privacy/">privacy policy</a>.
+      </p>
+
+      <h2>4. Acceptable use</h2>
+      <p>
+        Don't misuse the site (no attempts to disrupt, reverse-engineer for harm, or scrape at scale). The site and its
+        content are provided "as is", without warranties, to the extent permitted by law.
+      </p>
+
+      <h2>5. Liability</h2>
+      <p>
+        To the maximum extent permitted by law, {SITE.name} is not liable for any loss arising from decisions made using
+        the prototype or its outputs.
+      </p>
+
+      <h2>6. Contact</h2>
+      <p>Questions about these terms? Email <a href={`mailto:${SITE.contactEmail}`}>{SITE.contactEmail}</a>.</p>
+    </div>
+  </article>
+</BaseLayout>

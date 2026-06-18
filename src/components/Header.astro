@@ -1,13 +1,14 @@
 ---
 import Navigation from './Navigation.astro';
+import { SITE } from '../config/site';
 ---
 
 <header class="sticky top-0 z-40 border-b border-primary/10 bg-white/90 backdrop-blur">
   <div class="container-x flex h-16 items-center justify-between">
     <a href="/" class="flex items-center gap-2 font-bold text-primary">
       <span class="inline-block h-6 w-6 rounded-md bg-accent"></span>
-      Seizoensplanner
-      <span class="badge-beta ml-1">beta</span>
+      {SITE.name}
+      <span class="badge-beta ml-1">prototype</span>
     </a>
     <Navigation />
   </div>
